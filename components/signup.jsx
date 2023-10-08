@@ -1,12 +1,17 @@
 import styles from "../styles/Home.module.css";
 import { Michroma } from "next/font/google";
+import { React, useContext, useState } from "react";
+import { logincontext } from "@/global/logincon";
+
 
 const Mac = Michroma({ weight: "400", subsets: ["latin"] });
 
 export default function About({register}) {
+  const { login, setlogin } = useContext(logincontext);
   return (
     <>
       <div id = "popup-modal" className=" max-w-sm p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700">
+      <div className="absolute top-2 text-black right-6 font-extrabold text-lg hover:cursor-pointer" onClick={()=>{setlogin(false)}}> x </div>
         <div className="space-y-6" action="#">
             <h5 className={`text-xl font-medium text-gray-900 dark:text-white ${Mac.className}`}>Sign Up to our platform</h5>
             <div>

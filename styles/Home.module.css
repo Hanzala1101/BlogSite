@@ -160,6 +160,9 @@
     overflow-y: scroll;
     height: 25rem;
   }
+  .scroll::-webkit-scrollbar {
+    display: none;
+  }
 
   /* Hasil */
 

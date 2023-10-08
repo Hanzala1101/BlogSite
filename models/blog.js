@@ -4,6 +4,8 @@ const blogSchema = new Schema(
   {
     title: String,
     description: String,
+    mblogdesc: String,
+    rating: Int16Array,
   },
   {
     timestamps: true,
