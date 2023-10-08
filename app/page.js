@@ -1,5 +1,5 @@
 import Image from "next/image";
-import styles from "@/styles/Home.module.css";
+import styles from "../styles/Home.module.css";
 import Navbar from "@/components/navbar";
 import HomeComponent from "@/components/home";
 import About from "@/components/about";
@@ -9,7 +9,6 @@ import Login from "../components/card";
 
 export default function Home() {
   return (
-    <>
     <div className={styles.background_image}>
 
       <Navbar />
@@ -19,6 +18,5 @@ export default function Home() {
       <Famed />
       <Contact />
     </div>
-    </>
-  );
+  )
 }
