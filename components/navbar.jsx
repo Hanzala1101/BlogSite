@@ -4,11 +4,11 @@ import Main from "../assets/main.png";
 import Logo from "../assets/logo.png";
 import styles from "../styles/Home.module.css";
 import { React, useContext } from "react";
-import { ContextProvider } from "@/global/global";
+import { logincontext } from "@/global/logincon";
 import Link from "next/link";
 
 export default function navbar() {
-  const login = useContext(ContextProvider);
+  const {login, setlogin} = useContext(logincontext);
   return (
     <div className="flex justify-between mx-5 pt-5 ">
       <div className={styles.logo}>
@@ -31,11 +31,10 @@ export default function navbar() {
         <Link href="#contact">
           <div className="pr-10 hover:font-bold">Contact</div>
         </Link>
-        <Link href="/login">
-          <div className="pr-10 hover:font-bold"  >
+        
+          <div className="pr-10 hover:font-bold hover:cursor-pointer"  onClick={()=>{setlogin(login=>!login)}} >
           Login
-          </div>
-        </Link>
+          </div>        
       </div>
     </div>
   );

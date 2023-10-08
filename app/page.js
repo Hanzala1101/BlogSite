@@ -1,4 +1,5 @@
 "use client";
+import { useState } from "react";
 import Image from "next/image";
 import styles from "../styles/Home.module.css";
 import Navbar from "@/components/navbar";
@@ -7,12 +8,15 @@ import About from "@/components/about";
 import Famed from "@/components/famed";
 import Contact from "@/components/contact";
 import Login from "../components/card";
-import { ContextProvider } from "@/global/global";
+import { logincontext } from "@/global/logincon";
 
 export default function Home() {
-  return (
-    <div className={styles.background_image}>
+  const [login, setlogin] = useState(false);
+  const [pagelogin, setpagelogin] = useState(false);
 
+  return (
+    <logincontext.Provider value={{login, setlogin, pagelogin, setpagelogin}}>
+    <div className={styles.background_image}>
       <Navbar />
       <Login />
       <HomeComponent />
@@ -20,6 +24,6 @@ export default function Home() {
       <Famed />
       <Contact />
     </div>
-    
+    </logincontext.Provider>    
   )
 }
