@@ -1,5 +1,6 @@
 import { Lexend, Old_Standard_TT, Lancelot, Michroma } from "next/font/google";
 import Styles from "../styles/Home.module.css"
+import Link from "next/link";
 // If loading a variable font, you don't need to specify the font weight
 const inter = Lexend({ subsets: ["latin"] });
 const old = Old_Standard_TT({ weight: "700", subsets: ["latin"] });
@@ -24,11 +25,11 @@ export default function HomeComponent() {
               <div className={`inline-block  ${Mac.className}`}>STOP ME</div>
               <div className={`leading-loose ${Mac.className}`}> PAASIONATE</div>
             </div>
-            <a href="/signup">
+            <Link href="/mblog">
             <div className="uppercase border border-black p-2 px-7 w-fit text-3xl mt-2 bg-[#a1392d6e] hover:bg-[#944141b3]">
               read
             </div>
-            </a>
+            </Link>
           </div>
         </div>
       </div>

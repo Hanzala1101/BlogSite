@@ -1,3 +1,4 @@
+"use client";
 import Image from "next/image";
 import styles from "../styles/Home.module.css";
 import Navbar from "@/components/navbar";
@@ -6,6 +7,7 @@ import About from "@/components/about";
 import Famed from "@/components/famed";
 import Contact from "@/components/contact";
 import Login from "../components/card";
+import { ContextProvider } from "@/global/global";
 
 export default function Home() {
   return (
@@ -18,5 +20,6 @@ export default function Home() {
       <Famed />
       <Contact />
     </div>
+    
   )
 }

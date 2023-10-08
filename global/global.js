@@ -8,7 +8,7 @@ const context = (props) => {
   const [login, setLogin] = useState(false);
   return (
     <ContextProvider.Provider value={{login,setLogin}}>
-        {children}
+        {props.children}
     </ContextProvider.Provider>
   );
 };

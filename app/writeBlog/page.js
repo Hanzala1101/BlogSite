@@ -1,7 +1,7 @@
 "use client";
 import {  useState } from "react";
 import { useRouter } from "next/navigation";
-import styles from "@/app/styles/Home.module.css";
+import styles from "@/styles/Home.module.css";
 import { Michroma, Orbitron , Amiri} from "next/font/google";
 
 
@@ -35,7 +35,7 @@ export default function witeBlog() {
       if (res.ok) {
         router.push("/");
       } else {
-        throw new Error("Failed to create a topic");
+        throw new Error("Failed to create a blog");
       }
     } catch (error) {
       console.log(error);

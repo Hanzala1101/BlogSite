@@ -1,4 +1,4 @@
-import Styles from "../styles/Home.module.css";
+import Styles from "../../styles/Home.module.css";
 import { Michroma, Marcellus_SC, Amiri } from "next/font/google";
 import React from 'react';
 
