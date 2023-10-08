@@ -1,12 +1,14 @@
+"use client";
 import Image from "next/image";
 import Main from "../assets/main.png";
 import Logo from "../assets/logo.png";
-import styles from "@/styles/Home.module.css";
+import styles from "../styles/Home.module.css";
 import { React, useContext } from "react";
-import { ContextProvider } from "@/global/global";
+import { logincontext } from "@/global/logincon";
+import Link from "next/link";
 
 export default function navbar() {
-  const setlogin = useContext(ContextProvider);
+  const {login, setlogin} = useContext(logincontext);
   return (
     <div className="flex justify-between mx-5 pt-5 ">
       <div className={styles.logo}>
@@ -17,23 +19,22 @@ export default function navbar() {
         />
       </div>
       <div className="flex uppercase  text-white ">
-        <a href="/mblog">
+        <Link href="/">
           <div className="pr-10 hover:font-bold ">Home</div>
-        </a>
-        <a href="#famed">
+        </Link>
+        <Link href="#famed">
           <div className="pr-10 hover:font-bold">Famed</div>
-        </a>
-        <a href="#about">
+        </Link>
+        <Link href="#about">
           <div className="pr-10 hover:font-bold">About</div>
-        </a>
-        <a href="#contact">
+        </Link>
+        <Link href="#contact">
           <div className="pr-10 hover:font-bold">Contact</div>
-        </a>
-        <a href="">
-          <div className="pr-10 hover:font-bold" >
-            Login
-          </div>
-        </a>
+        </Link>
+        
+          <div className="pr-10 hover:font-bold hover:cursor-pointer"  onClick={()=>{setlogin(login=>!login)}} >
+          Login
+          </div>        
       </div>
     </div>
   );

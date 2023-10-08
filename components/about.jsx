@@ -1,4 +1,4 @@
-import styles from "@/styles/Home.module.css";
+import styles from "../styles/Home.module.css";
 import { Michroma } from "next/font/google";
 
 const Mac = Michroma({ weight: "400", subsets: ["latin"] });
