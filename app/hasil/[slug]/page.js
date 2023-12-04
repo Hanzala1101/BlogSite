@@ -1,13 +1,14 @@
 // import { useEffect } from "react";
-import Styles from "../../styles/Home.module.css";
+import Styles from "../../../styles/Home.module.css";
 import { Michroma, Marcellus_SC, Amiri } from "next/font/google";
-
+// import { useParams } from "next/navigation";
 const Mar = Marcellus_SC({ weight: "400", subsets: ["latin"] });
 const Ami = Amiri({ weight: "400", subsets: ["latin"] });
 
-const getBlogs = async () => {
+const getBlogs = async (req) => {
+
     try {
-      const res = await fetch(`http://127.0.0.1:3000/api/blog`, {
+      const res = await fetch(`http://127.0.0.1:3000/api/blog/id=${req}`, {
         cache: "no-store",
       });
   
@@ -21,8 +22,9 @@ const getBlogs = async () => {
     }
   };
 
-export default async function Hasil({params}) {
-    console.log(params.id)
+export default function Hasil({params}) {
+  // const params = useParams()
+    console.log(params)
     // useEffect(async () =>  {
     //     const res = await getBlogs()
     //     console.log(res)

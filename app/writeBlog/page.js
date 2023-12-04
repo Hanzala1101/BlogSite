@@ -23,7 +23,7 @@ export default function witeBlog() {
     }
 
     try {
-      const res = await fetch("http://localhost:3000/api/blog", {
+      const res = await fetch("http://127.0.0.1:3000/api/blog", {
         method: "POST",
         headers: {
           "Content-type": "application/json",
