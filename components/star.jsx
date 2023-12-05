@@ -6,7 +6,8 @@ import { MdEditNote } from "react-icons/md";
 
 export default  function star(props)  {
     const router = useRouter()
-    const removeblog = async () => {
+    const removeblog = async (e) => {
+      e.preventDefault();
       const confirmed = confirm("Are you sure?");
       if (confirmed) {
         const res = await fetch(`http://127.0.0.1:3000/api/blog?id=${props.id}`, {
@@ -17,6 +18,10 @@ export default  function star(props)  {
           router.refresh();
         }
       }
+    }
+
+    const editblog = (e)=>{
+      e.preventDefault();
     }
     return (
       <>
@@ -31,10 +36,10 @@ export default  function star(props)  {
           </div>
           <div className="flex justify-between w-20 ">
             <button onClick={removeblog}>
-              <RiChatDeleteFill size={25} />
+              <RiChatDeleteFill size={25} className='hover:scale-150'/>
             </button>
-            <button>
-              <MdEditNote size={30} />
+            <button onClick={editblog}>
+              <MdEditNote size={30} className='hover:scale-150'/>
             </button>
           </div>
         </div>

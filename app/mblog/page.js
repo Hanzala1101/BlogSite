@@ -36,8 +36,15 @@ export default async function Mblog() {
         </div>
         <div className={`flex flex-col items-center m-10 ${Styles.scroll}`}>
           {Blogs.reverse().map((t) => (
-            <Link href={`/hasil/id=${t._id}`} >
-              <Blog title={t.title} desc={t.description} id={t._id}/>
+            <Link href={`/hasil/${t._id}`} >
+              <div className={Styles.blogbox}>
+                <div className={`text-4xl ${Mar.className}`}>{t.title}</div>
+                <div className={`text-xl ${Ami.className}`}>
+                  {t.description?.slice(0, 60)}...
+                </div>
+                <Star id={t._id} />
+              </div>
+              {/* <Blog title={t.title} desc={t.description} id={t._id} key={t._id} /> */}
             </Link>
           ))}
         </div>
@@ -56,14 +63,8 @@ export default async function Mblog() {
 
 
 
-const Blog = (props) => {
-  return (
-    <div className={Styles.blogbox}>
-      <div className={`text-4xl ${Mar.className}`}>{props.title}</div>
-      <div className={`text-xl ${Ami.className}`}>
-        {props.desc?.slice(0, 60)}...
-      </div>
-      <Star id={props.id}/>
-    </div>
-  );
-};
+// const Blog = (props) => {
+//   return (
+    
+//   );
+// };
