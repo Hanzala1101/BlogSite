@@ -10,7 +10,7 @@ function card() {
   return (
     <>
       
-         <div className={`w-screen h-screen -top-6 z-0  ${login?"absolute": "hidden"}`}>
+         <div className={`w-screen h-screen -top-6 z-10  ${login?"absolute backdrop-blur-sm": "hidden"}`}>
           <div className="relative flex justify-center items-center w-full h-full z-10">
             {logreg==="login"?<Login register={setlogreg}/>:<SignUp register={setlogreg}/>}
           </div>

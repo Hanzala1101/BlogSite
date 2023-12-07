@@ -27,7 +27,7 @@ export default function home({
     <>
       <div className={styles.background_image}>
         <form
-          className="pt-5 p-5 text-white"
+          className="pt-5 p-5 text-white w-screen"
           method="POST"
           onSubmit={SubmitEvent}
         >
@@ -38,7 +38,7 @@ export default function home({
             <Titles title={title} settitle={settitle} />
             
           </div>
-          <div className="flex flex-row space-x-52">
+          <div className="flex flex-row space-x-52 mb-2">
             <div className={`text-xl ml-2 ${Orb.className}`}>Start</div>
             <div className="">
               <CheckBox famous={famous} setFamous={setFamous} />
@@ -63,10 +63,10 @@ export default function home({
           </div>
           <Descp desc={description} setdesc={setdesc} />
           <button
-            className="lg:mr-20 m-2 float-right bg-[#ffffff40] p-2 text-2xl  hover:text-black rounded-md"
+            className="lg:mr-4 m-2 float-right bg-[#ffffff40] p-2 text-2xl  hover:text-black rounded-md"
             type="submit"
           >
-            Review
+            Submit
           </button>
         </form>
       </div>

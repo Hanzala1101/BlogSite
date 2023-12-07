@@ -2,7 +2,6 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Home from "./component/home"
-import desc from "./component/desc";
 
 export default function witeBlog() {
   const [title, settitle] = useState("");

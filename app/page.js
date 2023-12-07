@@ -16,13 +16,14 @@ export default function Home() {
 
   return (
     <logincontext.Provider value={{login, setlogin, pagelogin, setpagelogin}}>
-    <div className={styles.background_image}>
+    <div className={`${login?"overflow-hidden":" "} + ${styles.background_image}`}>
       <Navbar />
       <Login />
       <HomeComponent />
       <About />
       <Famed />
       <Contact />
+      
     </div>
     </logincontext.Provider>    
   )

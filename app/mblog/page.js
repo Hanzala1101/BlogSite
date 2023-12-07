@@ -3,7 +3,7 @@ import { Michroma, Marcellus_SC, Amiri } from "next/font/google";
 import React from "react";
 import Star from "../../components/star"
 import Link from "next/link";
-
+import parse from 'html-react-parser';
 
 const Mac = Michroma({ weight: "400", subsets: ["latin"] });
 const Mar = Marcellus_SC({ weight: "400", subsets: ["latin"] });
@@ -35,14 +35,14 @@ export default async function Mblog() {
           <div className={Mac.className}>RECENT BLOGS</div>
         </div>
         <div className={`flex flex-col items-center m-10 ${Styles.scroll}`}>
-          {Blogs.reverse().map((t) => (
+          {Blogs.sort((a, b)=> b.range - a.range).map((t) => (
             <Link href={`/hasil/${t._id}`} >
               <div className={Styles.blogbox}>
                 <div className={`text-4xl ${Mar.className}`}>{t.title}</div>
                 <div className={`text-xl ${Ami.className}`}>
-                  {t.description?.slice(0, 60)}...
+                  {parse(t.description?.slice(0, 60))}...
                 </div>
-                <Star id={t._id} count={t.range}/>
+                <Star id={t._id} count={t.range} />
               </div>
               {/* <Blog title={t.title} desc={t.description} id={t._id} key={t._id} /> */}
             </Link>
@@ -60,11 +60,3 @@ export default async function Mblog() {
     </section>
   );
 }
-
-
-
-// const Blog = (props) => {
-//   return (
-    
-//   );
-// };

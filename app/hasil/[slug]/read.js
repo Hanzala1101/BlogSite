@@ -1,6 +1,8 @@
 import React from 'react'
 import Link from "next/link";
 import Styles from "../../../styles/Home.module.css";
+import parse from 'html-react-parser';
+
 import { Michroma, Marcellus_SC, Amiri } from "next/font/google";
 const Mar = Marcellus_SC({ weight: "400", subsets: ["latin"] });
 const Ami = Amiri({ weight: "400", subsets: ["latin"] });
@@ -14,7 +16,7 @@ export default function read({title, desc}) {
             <div className="flex align-middle justify-center ">
                 <div className={Styles.hlog}>
                     <div className={`m-2 p-2 text-xl text-justify`}>
-                    {desc}
+                    {parse(desc)}
                     </div>
                 </div>
             </div>    
