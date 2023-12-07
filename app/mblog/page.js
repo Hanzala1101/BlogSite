@@ -42,7 +42,7 @@ export default async function Mblog() {
                 <div className={`text-xl ${Ami.className}`}>
                   {t.description?.slice(0, 60)}...
                 </div>
-                <Star id={t._id} />
+                <Star id={t._id} count={t.range}/>
               </div>
               {/* <Blog title={t.title} desc={t.description} id={t._id} key={t._id} /> */}
             </Link>

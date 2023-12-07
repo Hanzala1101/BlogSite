@@ -6,8 +6,8 @@ export default function desc({ desc, setdesc }) {
     <textarea
       className="w-11/12 p-2 h-80 mt-2 text-black"
       placeholder="long year ago....."
+      defaultValue={desc}
       onChange={(e) => setdesc(e.target.value)}
-      value={desc}
     ></textarea>
   </div>
   )

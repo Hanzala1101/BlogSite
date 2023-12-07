@@ -9,10 +9,10 @@ export default function title({ title, settitle }) {
     <div className={`m-8 text-xl ml-2 ${Orb.className}`}>
           Title
           <input
-            onChange={(e) => settitle(e.target.value)}
             name="Title "
             placeholder="Enter the Title"
-            value={title}
+            defaultValue={title}
+            onChange={(e) => settitle(e.target.value)}
             className=" ml-5 mb-4 p-2 rounded-md text-black"
           />
         </div>

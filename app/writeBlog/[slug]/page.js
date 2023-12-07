@@ -1,45 +1,29 @@
-"use client";
-import { useState } from "react";
-import { useRouter } from "next/navigation";
-import Home from "./component/home"
+import Home from "../component/homeEdit"
 
-export default function witeBlog() {
-  const [title, settitle] = useState("");
-  const [description, setdesc] = useState("");
+const getBlogs = async (id) => {
+  try {
+    const res = await fetch(`http://127.0.0.1:3000/api/blog/${id}`, {
+      cache: "no-store",
+    });
 
-  const router = useRouter();
-
-  const SubmitEvent = async (e) => {
-    e.preventDefault();
-
-    if (!title || !description) {
-      alert("Title and description are required.");
-      return;
+    if (!res.ok) {
+      throw new Error("Failed to fetch blogs by id");
     }
-
-    try {
-      const res = await fetch("http://127.0.0.1:3000/api/blog/id", {
-        method: "POST",
-        headers: {
-          "Content-type": "application/json",
-        },
-        body: JSON.stringify({ title, description }),
-      });
-
-      if (res.ok) {
-        router.push("/");
-      } else {
-        throw new Error("Failed to create a blog");
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  };
+    return res.json();
+  } catch (error) {
+    console.log("Error loading topics: ", error);
+  }
+};
 
 
-
+export default async function witeBlog({params}) {
+  const id = params.slug;
+  // console.log("id"+ id)
+  const {blog} = await getBlogs(params.slug);
+  // console.log(blog.title +"blogssa")
+  
   return (
-    <Home title={title} description={description} settitle={settitle} setdesc={setdesc} SubmitEvent={SubmitEvent}/>
+    <Home id={id} title={blog.title} description={blog.description} />
   );
 }
 

@@ -22,12 +22,8 @@ const getBlogs = async () => {
   };
 
 export default async function Hasil({params}) {
-    console.log(params.id)
-    // useEffect(async () =>  {
-    //     const res = await getBlogs()
-    //     console.log(res)
-    //   return res;
-    // }, [])
+    // console.log(params.id)
+  
     
     
     return (

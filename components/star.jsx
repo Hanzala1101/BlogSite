@@ -1,14 +1,15 @@
 "use client"
 import { useRouter } from 'next/navigation';
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import { RiChatDeleteFill } from "react-icons/ri";
 import { MdEditNote } from "react-icons/md";
 
 export default  function star(props)  {
+  const [count, setcount] = useState(props.count)
     const router = useRouter()
     const removeblog = async (e) => {
       e.preventDefault();
-      const confirmed = confirm("Are you sure?");
+      const confirmed = confirm("Are you sure you want to delete?");
       if (confirmed) {
         const res = await fetch(`http://127.0.0.1:3000/api/blog?id=${props.id}`, {
           method: "DELETE",
@@ -22,15 +23,26 @@ export default  function star(props)  {
 
     const editblog = (e)=>{
       e.preventDefault();
+      const confirme = confirm("Are you sure?");
+      if(confirme){
+        router.push(`/writeBlog/${props.id}`);
+      }
     }
+
+    useEffect(() => {
+      setcount(isNaN(props.count)?0: props.count );
+      console.log(count)
+    }, [])
+    
+    
     return (
       <>
         <div className="flex justify-between w-56">
           <div className="flex justify-end space-x-1">
-            {[...Array(3)].map((e, i) => (
+            {[...Array(count)].map((e, i) => (
               <Rating color="text-black" />
             ))}
-            {[...Array(5 - 3)].map((e, i) => (
+            {[...Array(5 - count)].map((e, i) => (
               <Rating color="text-gray-300 dark:text-gray-500" />
             ))}
           </div>

@@ -2,11 +2,13 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Home from "./component/home"
+import desc from "./component/desc";
 
 export default function witeBlog() {
   const [title, settitle] = useState("");
   const [description, setdesc] = useState("");
-
+  const [famous, setFamous] = useState(false)
+  const [range, setrange] = useState(0)
   const router = useRouter();
 
   const SubmitEvent = async (e) => {
@@ -18,14 +20,18 @@ export default function witeBlog() {
     }
 
     try {
+      console.log(title)
+      console.log(description)
+      console.log(famous)
+      console.log(range)
       const res = await fetch("http://127.0.0.1:3000/api/blog", {
         method: "POST",
         headers: {
           "Content-type": "application/json",
         },
-        body: JSON.stringify({ title, description }),
+        body: JSON.stringify({  title, description, famous, range }),
       });
-
+      console.log(description)
       if (res.ok) {
         router.push("/");
       } else {
@@ -39,7 +45,10 @@ export default function witeBlog() {
 
 
   return (
-    <Home title={title} description={description} settitle={settitle} setdesc={setdesc} SubmitEvent={SubmitEvent}/>
+    <Home title={title} 
+    description={description} settitle={settitle} 
+    setdesc={setdesc} SubmitEvent={SubmitEvent} range={range}
+     setrange={setrange} famous={famous} setFamous={setFamous} />
   );
 }
 

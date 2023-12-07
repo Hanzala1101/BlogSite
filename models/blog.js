@@ -4,6 +4,8 @@ const blogSchema = new Schema(
   {
     title: String,
     description: String,
+    famous: Boolean,
+    range: Number,
   },
   {
     timestamps: true,

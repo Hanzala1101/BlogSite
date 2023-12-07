@@ -1,7 +1,7 @@
 import Read from "./read";
 
 const getBlogs = async (id) => {
-  console.log("id",id)
+  // console.log("id",id)
   
     try {
       const res = await fetch(`http://127.0.0.1:3000/api/blog/${id}`, {

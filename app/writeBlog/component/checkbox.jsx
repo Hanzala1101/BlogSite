@@ -1,10 +1,9 @@
-import React, {useState} from 'react'
+import React from 'react'
 
-export default function checkbox() {
-    const [isChecked, setIsChecked] = useState(false)
+export default function checkbox({famous, setFamous}) {
 
   const handleCheckboxChange = () => {
-    setIsChecked(!isChecked)
+    setFamous(!famous)
   }
   return (
     <div>
@@ -13,7 +12,7 @@ export default function checkbox() {
               type="checkbox"
               role="switch"
               id="flexSwitchChecked"
-              checked={isChecked}
+              checked={famous}
               onChange={handleCheckboxChange}
             />
             <label

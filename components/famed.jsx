@@ -5,7 +5,28 @@ const Mac = Michroma({ weight: "400", subsets: ["latin"] });
 const Mar = Marcellus_SC({ weight: "400", subsets: ["latin"] });
 const Ami = Amiri({ weight: "700", subsets: ["latin"] });
 
-export default function Famed() {
+const getBlogs = async () => {
+    try {
+      const res = await fetch("http://127.0.0.1:3000/api/blog");
+  
+      if (!res.ok) {
+        throw new Error("Failed to fetch topics");
+      }
+  
+      return res.json();
+    } catch (error) {
+      console.log("Error loading topics: ", error);
+    }
+  };
+
+export default async function Famed() {
+    // useEffect(async() => {
+        const {Blogs} = await getBlogs();
+        // console.log(Blogs[0].famous)
+        // return ()=>Blogs;
+    // }, [])
+    
+    
     return (
     <section id="famed">
         <div className={styles.background_image}>
@@ -13,18 +34,14 @@ export default function Famed() {
                 <div className={Mac.className}>FAMOUSE ARTICLES</div>
             </div>
             <div className={`m-10 ${styles.container}`}>
-                <a href="/hasil"><div className={styles.articleBox}>
-                    <div className={`text-6xl text-center ${Mar.className}`}>hasil</div>
-                    <div className={`text-xl text-center p-10 ${ Ami.className}`}>Hasil ki na qadri or la-hasil ki qadr yeh ek aam cheez hu gae hai.Kabhi socha hai jo la-hasil hai jab hasil hujae toh kya tab bhi tum uski utni hi parwah karoge. Hum la-hasil ke piche itna bhagte hai ke jab woh hasil hu jae toh hame farq nahi padta................</div>
-                </div></a>
-                <a href="/login"><div className={styles.articleBox}>
-                    <div className={`text-6xl text-center ${Mar.className}`}>bint-e-dil</div>
-                    <div className={`text-xl text-center ${ Ami.className}`}></div>
-                </div></a>
-                <a href="/login"><div className={styles.articleBox}>
-                    <div className={`text-6xl text-center ${Mar.className}`}>yaqeen</div>
-                    <div className={`text-xl text-center ${ Ami.className}`}></div>
-                </div></a>
+                {Blogs.filter((blog)=>blog.famous).map((blog)=>{
+                    return(
+                        <a href="/hasil"><div className={styles.articleBox}>
+                        <div className={`text-6xl text-center ${Mar.className}`}>{blog.title}</div>
+                        <div className={`text-xl text-center p-10 ${ Ami.className}`}>{blog.description.slice(0,400)}</div>
+                    </div></a>        
+                    )
+                })}
             </div>
         </div>
     </section>
