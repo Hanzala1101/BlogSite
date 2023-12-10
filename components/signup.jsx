@@ -2,16 +2,25 @@ import styles from "../styles/Home.module.css";
 import { Michroma } from "next/font/google";
 import { React, useContext, useState } from "react";
 import { logincontext } from "@/global/logincon";
-import {useForm} from 'react-hook-form'
+import { useForm } from "react-hook-form";
 
 const Mac = Michroma({ weight: "400", subsets: ["latin"] });
 
-export default function About({ registerPage }) {
+export default function About({ isSignIn }) {
   const { login, setlogin } = useContext(logincontext);
-  const {register,
-    handleSubmit, formState:{errors}} = useForm()
-    
-    const onSubmit = (data) => console.log(data)
+  const [open, setOpen] =useState(false);
+  const handleOpen =()=>setOpen(true);
+  const handleClose = ()=>setOpen(false);
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+  const renderContent = (signInCntent, signUpConent) => {
+    return isSignIn ? signInCntent : signUpConent;
+  };
+  const onSubmit = (data) => console.log(data);
   return (
     <>
       <form
@@ -32,43 +41,48 @@ export default function About({ registerPage }) {
           <h5
             className={`text-xl font-medium text-gray-900 dark:text-white ${Mac.className}`}
           >
-            Sign Up to our platform
+            {renderContent("Sign Up ", "Sign In")} to our platform
           </h5>
           <div className="flex">
-          <div>
-            <label
-              htmlFor="first_name"
-              className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-            >
-              First Name
-            </label>
-            <input
-              type="text"
-              name="first_name"
-              id="first_name"
-              className={`bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg  block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white focus:ring-blue-500 focus:border-blue-500 `}
-              placeholder="Zaara"
-              
-              {...register("first_name",{required:true, pattern:/^[a-zA-Z]+$/})}
-            ></input>
-          </div>
-          <div className="w-2"></div>
-          <div>
-            <label
-              htmlFor="last_name"
-              className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-            >
-              Last Name
-            </label>
-            <input
-              type="text"
-              name="last_name"
-              id="last_name"
-              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-              placeholder="Shajal"
-              {...register("last_name",{required:true, pattern:/^[a-zA-Z]+$/})}
-            ></input>
-          </div>
+            <div>
+              <label
+                htmlFor="first_name"
+                className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >
+                First Name
+              </label>
+              <input
+                type="text"
+                name="first_name"
+                id="first_name"
+                className={`bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg  block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white focus:ring-blue-500 focus:border-blue-500 `}
+                placeholder="Zaara"
+                {...register("first_name", {
+                  required: true,
+                  pattern: /^[a-zA-Z]+$/,
+                })}
+              ></input>
+            </div>
+            <div className="w-2"></div>
+            <div>
+              <label
+                htmlFor="last_name"
+                className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >
+                Last Name
+              </label>
+              <input
+                type="text"
+                name="last_name"
+                id="last_name"
+                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                placeholder="Shajal"
+                {...register("last_name", {
+                  required: true,
+                  pattern: /^[a-zA-Z]+$/,
+                })}
+              ></input>
+            </div>
           </div>
           <div>
             <label
@@ -83,7 +97,7 @@ export default function About({ registerPage }) {
               id="email"
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
               placeholder="name@company.com"
-              {...register("email",{required:true, pattern:/^\S+@\S+$/i})}
+              {...register("email", { required: true, pattern: /^\S+@\S+$/i })}
             ></input>
           </div>
           <div>
@@ -99,7 +113,7 @@ export default function About({ registerPage }) {
               id="password"
               placeholder="••••••••"
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-              {...register("password",{required:true})}
+              {...register("password", { required: true })}
             ></input>
           </div>
           <div>
@@ -115,7 +129,7 @@ export default function About({ registerPage }) {
               id="password1"
               placeholder="••••••••"
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-              {...register("password1",{required:true})}
+              {...register("password1", { required: true })}
             ></input>
           </div>
           <div className="flex items-start">
@@ -126,7 +140,6 @@ export default function About({ registerPage }) {
                   type="checkbox"
                   value=""
                   className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800"
-                  
                 ></input>
               </div>
               <label
