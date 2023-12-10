@@ -19,10 +19,7 @@ export default function witeBlog() {
     }
 
     try {
-      console.log(title)
-      console.log(description)
-      console.log(famous)
-      console.log(range)
+ 
       const res = await fetch("http://127.0.0.1:3000/api/blog", {
         method: "POST",
         headers: {

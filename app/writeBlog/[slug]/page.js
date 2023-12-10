@@ -16,14 +16,16 @@ const getBlogs = async (id) => {
 };
 
 
-export default async function witeBlog({params}) {
+export default async function witeBlog({ params }) {
   const id = params.slug;
   // console.log("id"+ id)
-  const {blog} = await getBlogs(params.slug);
+  const { blog } = await getBlogs(params.slug);
   // console.log(blog.title +"blogssa")
-  
+
   return (
-    <Home id={id} title={blog.title} description={blog.description} />
+    <Home id={id} title={blog.title} description={blog.description}
+      range={blog.range}
+      famous={blog.famous} />
   );
 }
 

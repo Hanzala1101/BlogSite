@@ -2,19 +2,24 @@ import styles from "@/styles/Home.module.css";
 import { Michroma } from "next/font/google";
 import { React, useContext, useState } from "react";
 import { logincontext } from "@/global/logincon";
+import {useForm} from 'react-hook-form'
 
 const Mac = Michroma({ weight: "400", subsets: ["latin"] });
 
-export default function About({ register }) {
+export default function About({ registerPage }) {
+  const {register, handleSubmit} = useForm()
   const { setlogin } = useContext(logincontext);
+
+  const onSubmit = (data) => console.log(data)
   return (
     <>
-      <div
+      <form
         id="popup-modal"
         className=" relative max-w-sm p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700"
+        onSubmit={handleSubmit(onSubmit)}
       >
         <div
-          className="absolute top-2 text-black right-6 font-extrabold text-lg hover:cursor-pointer"
+          className="text-white absolute top-2 text-black right-6 font-extrabold text-lg hover:cursor-pointer"
           onClick={() => {
             setlogin(false);
           }}
@@ -42,6 +47,7 @@ export default function About({ register }) {
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
               placeholder="name@company.com"
               required
+              {...register("email")}
             ></input>
           </div>
           <div>
@@ -58,6 +64,7 @@ export default function About({ register }) {
               placeholder="••••••••"
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
               required
+              {...register("password")}
             ></input>
           </div>
           <div className="flex items-start">
@@ -68,7 +75,7 @@ export default function About({ register }) {
                   type="checkbox"
                   value=""
                   className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800"
-                  required
+                  
                 ></input>
               </div>
               <label
@@ -92,19 +99,19 @@ export default function About({ register }) {
             Login to your account
           </button>
           <div className="text-sm font-medium text-gray-500 dark:text-gray-300">
-            Not registered?{" "}
+            Not registerPageed?{" "}
             <a
               href="#"
               className="text-blue-700 hover:underline dark:text-blue-500"
               onClick={() => {
-                register("signup");
+                registerPage("signup");
               }}
             >
               Create account
             </a>
           </div>
         </div>
-      </div>
+      </form>
     </>
   );
 }

@@ -10,8 +10,9 @@ const Ami = Amiri({ weight: "700", subsets: ["latin"] });
 
 const getBlogs = async () => {
   try {
-    const res = await fetch("http://127.0.0.1:3000/api/blog");
-
+    const res = await fetch(`http://127.0.0.1:3000/api/blog`, {
+      cache: "no-store",
+    });
     if (!res.ok) {
       throw new Error("Failed to fetch topics");
     }
@@ -24,14 +25,16 @@ const getBlogs = async () => {
 
 export default function Famed() {
   const [Blogs, setBlogs] = useState();
+  const [loding, setloding] = useState(false)
   useEffect(() => {
     const fetchData = async () => {
-      const { Blogs } = await getBlogs();
+      const {Blogs}  = await getBlogs();
       console.log(Blogs);
       setBlogs(Blogs);
     };
-
+  
     fetchData();
+    setloding(true)
   }, []);
 
   return (
@@ -40,7 +43,7 @@ export default function Famed() {
         <div className="text-4xl lg:text-5xl text-white ml-5 pt-8">
           <div className={Mac.className}>FAMOUSE ARTICLES</div>
         </div>
-        <div className={`m-10 ${styles.container}`}>
+        {loding?<div className={`m-10 ${styles.container}`}>
           {Blogs?.filter((blog) => blog.famous)
             .sort((a, b) => b.range - a.range)
             .slice(0, 3)
@@ -52,15 +55,15 @@ export default function Famed() {
                       {blog.title}
                     </div>
                     <div
-                      className={`text-xl text-center p-10 ${Ami.className}`}
+                      className={`text-xl text-center p-10 overflow-hidden ${Ami.className}`}
                     >
-                      {parse(blog.description.slice(0, 400))}...
+                      {parse(blog.description.slice(0, 300))}...
                     </div>
                   </div>
                 </Link>
               );
             })}
-        </div>
+        </div>:<div className="text-4xl w-screen h-screen flex justify-center align-center">....</div>}
       </div>
     </section>
   );

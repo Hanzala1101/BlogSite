@@ -1,5 +1,5 @@
 import React from "react";
-import ReactQuill, { Quill, editor } from "react-quill";
+import ReactQuill from "react-quill";
 // import ImageResize  from 'quill-image-resize-module';
 import "react-quill/dist/quill.snow.css";
 import CustomToolbar from "./CustomToolbar";
