@@ -14,12 +14,12 @@ const getBlogs = async () => {
       cache: "no-store",
     });
     if (!res.ok) {
-      throw new Error("Failed to fetch topics");
+      throw new Error("Failed to fetch blogs");
     }
 
     return res.json();
   } catch (error) {
-    console.log("Error loading topics: ", error);
+    console.log("Error loading blogs: ", error);
   }
 };
 
@@ -29,7 +29,6 @@ export default function Famed() {
   useEffect(() => {
     const fetchData = async () => {
       const {Blogs}  = await getBlogs();
-      console.log(Blogs);
       setBlogs(Blogs);
     };
   

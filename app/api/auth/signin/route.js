@@ -33,7 +33,7 @@ export async function POST(request) {
     })
 
     if (errors.length) {
-        return NextResponse.json({ errorMessage: errors[0] })
+        return new NextResponse(JSON.stringify({ errorMessage: errors[0] }))
     }
 
     await connectMongoDB();
@@ -41,13 +41,13 @@ export async function POST(request) {
     const usersWithEmail = await User.findOne({ email: res.email })
 
     if (!usersWithEmail) {
-        return NextResponse.json({ message: "No user found Create an Account" })
+        return new NextResponse(JSON.stringify({ errorMessage: "No user found Create an Account" }),{status:400})
     }
 
 
     const isMatch = await bcrypt.compare(res.password,usersWithEmail.password)
     if(!isMatch){
-        return NextResponse.json({errorMessage:"password Entered is incorrect"})
+        return new NextResponse(JSON.stringify({errorMessage:"password Entered is incorrect"}),{status:400})
     }
 
     const alg = "HS256"
@@ -57,5 +57,17 @@ export async function POST(request) {
     .setExpirationTime("24h")
     .sign(signature)
 
-    return NextResponse.json({ token})
+    const response = new NextResponse(JSON.stringify({
+        first_name:usersWithEmail.first_name,
+        last_name:  usersWithEmail.last_name,
+        email:  usersWithEmail.email
+    },{status:200}))
+
+    response.cookies.set({
+        name: "jwt",
+        value: token,
+        maxAge: 60 * 60 * 24
+      });
+
+    return response;
 }

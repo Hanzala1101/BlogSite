@@ -7,24 +7,22 @@ import HomeComponent from "@/components/home";
 import About from "@/components/about";
 import Famed from "@/components/famed";
 import Contact from "@/components/contact";
-import Login from "../components/card";
+import Login from "../components/logincard";
 import { logincontext } from "@/global/logincon";
 
 export default function Home() {
-  const [login, setlogin] = useState(false);
-  const [pagelogin, setpagelogin] = useState(false);
+  const [loginCard, setloginCard] = useState(false);
 
   return (
-    <logincontext.Provider value={{login, setlogin, pagelogin, setpagelogin}}>
-    <div className={`${login?"overflow-hidden":" "} + ${styles.background_image}`}>
+    <logincontext.Provider value={{loginCard, setloginCard}}>
+    <div className={`${loginCard?"overflow-hidden":" "} + ${styles.background_image}`}>
       <Navbar />
       <Login />
       <HomeComponent />
       <About />
       <Famed />
       <Contact />
-      
-    </div>
+    </div> 
     </logincontext.Provider>    
   )
 }

@@ -45,7 +45,7 @@ export async function POST(request) {
     })
 
     if (errors.length) {
-        return NextResponse.json({ errorMessage: errors[0] })
+        return new NextResponse(JSON.stringify({ errorMessage: errors[0] }),{Status:400})
     }
 
     await connectMongoDB();
@@ -53,11 +53,11 @@ export async function POST(request) {
     const usersWithEmail = await User.findOne({ email: res.email })
 
     if (usersWithEmail) {
-        return NextResponse.json({ message: "Account is already created " })
+        return new NextResponse(JSON.stringify({ errorMessage: "Account is already created " }),{status:400})
     }
 
     const hashpassword = await bcrypt.hash(res.password, 10)
-
+    
     await User.create({ first_name: res.first_name, last_name: res.last_name, email: res.email, password: hashpassword })
 
     const alg = "HS256"
@@ -67,5 +67,17 @@ export async function POST(request) {
     .setExpirationTime("24h")
     .sign(signature)
 
-    return NextResponse.json({ res ,token})
+    const response = new NextResponse(JSON.stringify({
+        first_name:res.first_name,
+        last_name:  res.last_name,
+        email:  res.email
+    },{status:200}))
+
+    response.cookies.set({
+        name: "jwt",
+        value: token,
+        maxAge: 60 * 60 * 24
+      });
+
+    return response;
 }

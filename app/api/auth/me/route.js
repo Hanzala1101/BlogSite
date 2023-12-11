@@ -4,6 +4,7 @@ import * as jose from 'jose'
 import jwt from "jsonwebtoken";
 import connectMongoDB from "@/lib/mongodb";
 import User from "@/models/user";
+
 export async function GET(request){
     const headersInstance = headers()
     const barearToken =  headersInstance.get("Authorization")
@@ -12,9 +13,11 @@ export async function GET(request){
 
     const payload = jwt.decode(Token)
     await connectMongoDB();
-    const userWithEmail = await User.findOne({email:payload.email}).select("first_name email")
+    const userWithEmail = await User.findOne({email:payload.email}).select("first_name last_name email")
     
-    return NextResponse.json({
-        id:userWithEmail
+    return NextResponse.json({admin:userWithEmail?.admin,
+        first_name:userWithEmail?.first_name,
+        last_name:userWithEmail?.last_name,
+        email:userWithEmail?.email
     })
 }
