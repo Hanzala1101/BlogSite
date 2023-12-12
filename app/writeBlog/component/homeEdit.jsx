@@ -21,7 +21,7 @@ export default function HomeEdit({ id, title, description }) {
     }
 
     try {
-      const res = await fetch(`http://127.0.0.1:3000/api/blog/${id}`, {
+      const res = await fetch(`http://localhost:3000/api/blog/${id}`, {
         method: "PUT",
         headers: {
           "Content-type": "application/json",

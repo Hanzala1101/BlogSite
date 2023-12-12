@@ -13,7 +13,7 @@ const useAuth = () => {
       data: null,
     }));
     try {
-      const res = await axios.post("http://127.0.0.1:3000/api/auth/signin", {
+      const res = await axios.post("http://localhost:3000/api/auth/signin", {
         email: data.email,
         password: data.password,
       });
@@ -44,7 +44,7 @@ const useAuth = () => {
     }));
     
     try {
-      const res = await axios.post("http://127.0.0.1:3000/api/auth/signup", {
+      const res = await axios.post("http://localhost:3000/api/auth/signup", {
         first_name: data.first_name,
         last_name: data.last_name,
         email: data.email,

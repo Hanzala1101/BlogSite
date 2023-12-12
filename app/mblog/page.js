@@ -11,7 +11,7 @@ const Ami = Amiri({ weight: "400", subsets: ["latin"] });
 
 const getBlogs = async () => {
   try {
-    const res = await fetch("http://127.0.0.1:3000/api/blog", {
+    const res = await fetch("http://localhost:3000/api/blog", {
       cache: "no-store",
     });
 
@@ -26,7 +26,8 @@ const getBlogs = async () => {
 };
 
 export default async function Mblog() {
-  const { Blogs } = await getBlogs();
+  try {
+    const { Blogs } = await getBlogs();
 
   return (
     <section id="main">
@@ -59,5 +60,9 @@ export default async function Mblog() {
         </div>
       </div>
     </section>
-  );
+  )
+    } catch (error) {
+      return (<>Blogs not found</>)
+    }
+
 }

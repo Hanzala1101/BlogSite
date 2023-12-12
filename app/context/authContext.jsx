@@ -33,7 +33,7 @@ export default function AuthContext({ children }) {
           data: null,
         }));
       } else {
-        const response = await axios.get("http://127.0.0.1:3000/api/auth/me", {
+        const response = await axios.get("http://localhost:3000/api/auth/me", {
           headers: {
             Authorization: `Bearer ${jwt}`,
           },

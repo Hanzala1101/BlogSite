@@ -11,7 +11,7 @@ const Ami = Amiri({ weight: "700", subsets: ["latin"] });
 
 const getBlogs = async () => {
   try {
-    const res = await fetch(`http://127.0.0.1:3000/api/blog`, {
+    const res = await fetch(`http://localhost:3000/api/blog`, {
       cache: "no-store",
     });
     if (!res.ok) {

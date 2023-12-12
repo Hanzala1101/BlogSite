@@ -20,14 +20,14 @@ export default function WiteBlog() {
 
     try {
  
-      const res = await fetch("http://127.0.0.1:3000/api/blog", {
+      const res = await fetch("http://localhost:3000/api/blog", {
         method: "POST",
         headers: {
           "Content-type": "application/json",
         },
         body: JSON.stringify({  title, description, famous, range }),
       });
-      console.log(description)
+      
       if (res.ok) {
         router.push("/");
       } else {
@@ -37,8 +37,6 @@ export default function WiteBlog() {
       console.log(error);
     }
   };
-
-
 
   return (
     <Home title={title} 

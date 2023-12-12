@@ -2,7 +2,7 @@ import Home from "../component/homeEdit"
 
 const getBlogs = async (id) => {
   try {
-    const res = await fetch(`http://127.0.0.1:3000/api/blog/${id}`, {
+    const res = await fetch(`http://localhost:3000/api/blog/${id}`, {
       cache: "no-store",
     });
 
@@ -17,16 +17,17 @@ const getBlogs = async (id) => {
 
 
 export default async function WiteBlog({ params }) {
-  const id = params.slug;
-  // console.log("id"+ id)
-  const { blog } = await getBlogs(params.slug);
-  // console.log(blog.title +"blogssa")
+  try{
+    const { blog } = await getBlogs(params.slug);
 
-  return (
-    <Home id={id} title={blog.title} description={blog.description}
-      range={blog.range}
-      famous={blog.famous} />
-  );
+    return (
+      <Home id={id} title={blog.title} description={blog.description}
+        range={blog.range}
+        famous={blog.famous} />
+    );}
+    catch{
+      return(<>blogs not found</>)
+    }
 }
 
 
