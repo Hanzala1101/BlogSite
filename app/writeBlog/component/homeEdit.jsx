@@ -4,7 +4,7 @@ import Home from "./home";
 import { useRouter } from "next/navigation";
 
 
-export default function home({ id, title, description }) {
+export default function Home({ id, title, description }) {
   const [newTitle, setnewtitle] = useState(title);
   const [newDescription, setnewdesc] = useState(description);
   const [newfamous, setnewFamous] = useState(false)

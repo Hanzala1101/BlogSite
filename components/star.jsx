@@ -5,8 +5,8 @@ import { RiChatDeleteFill } from "react-icons/ri";
 import { MdEditNote } from "react-icons/md";
 import useAuthContext from "@/Hooks/useAuthContext";
 
-export default function star(props) {
-  const [count, setcount] = useState(props.count);
+export default function Star(props) {
+  const [count, setcount] = useState(isNaN(props?.count) ? 0 : props?.count);
   const { data } = useAuthContext();
   const router = useRouter();
   
@@ -32,9 +32,6 @@ export default function star(props) {
     }
   };
 
-  useEffect(() => {
-    setcount(isNaN(props.count) ? 0 : props.count);
-  }, []);
 
   return (
     <>

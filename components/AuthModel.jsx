@@ -8,7 +8,7 @@ import Alert from '@mui/material/Alert';
 
 const Mac = Michroma({ weight: "400", subsets: ["latin"] });
 
-export default function About({ isSignIn, setisSignin }) {
+export default function AuthModel({ isSignIn, setisSignin }) {
   const {loading, data, error,loginCard,setloginCard}= useAuthContext();
 
   const {

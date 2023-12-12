@@ -16,7 +16,7 @@ const getBlogs = async (id) => {
 };
 
 
-export default async function witeBlog({ params }) {
+export default async function WiteBlog({ params }) {
   const id = params.slug;
   // console.log("id"+ id)
   const { blog } = await getBlogs(params.slug);

@@ -2,7 +2,7 @@ import { React, useState } from "react";
 import SignUp from "./AuthModel";
 import useAuthContext from "@/Hooks/useAuthContext";
 
-function card() {
+function Card() {
   const { loginCard } = useAuthContext();
   const [isSignin, setisSignin] = useState(true);
   return (
@@ -20,4 +20,4 @@ function card() {
   );
 }
 
-export default card;
+export default Card;

@@ -4,7 +4,7 @@ const Mac = Michroma({ weight: "400", subsets: ["latin"] });
 const Orb = Orbitron({ weight: "400", subsets: ["latin"] });
 const Ami = Amiri({ weight: "700", subsets: ["latin"] });
 
-export default function title({ title, settitle }) {
+export default function Title({ title, settitle }) {
   return (
     <div className={`m-8 text-xl ml-2 ${Orb.className}`}>
           Title

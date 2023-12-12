@@ -7,7 +7,7 @@ import Link from "next/link";
 import useAuth from "@/Hooks/useAuth";
 import useAuthContext from "@/Hooks/useAuthContext";
 
-export default function navbar() {
+export default function Navbar() {
   const {data, loginCard, setloginCard} = useAuthContext()
   const {logout} = useAuth()
 

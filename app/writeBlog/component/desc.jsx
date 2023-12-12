@@ -4,7 +4,7 @@ import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import CustomToolbar from "./CustomToolbar";
 
-export default function desc({ desc, setdesc }) {
+export default function Desc({ desc, setdesc }) {
   const modules = {
     toolbar: {
       container: "#toolbar",

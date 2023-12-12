@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function checkbox({famous, setFamous}) {
+export default function Checkbox({famous, setFamous}) {
 
   const handleCheckboxChange = () => {
     setFamous(!famous)

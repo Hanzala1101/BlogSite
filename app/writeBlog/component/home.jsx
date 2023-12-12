@@ -8,7 +8,7 @@ const Mac = Michroma({ weight: "400", subsets: ["latin"] });
 const Orb = Orbitron({ weight: "400", subsets: ["latin"] });
 const Ami = Amiri({ weight: "700", subsets: ["latin"] });
 
-export default function home({
+export default function Home({
   title,
   description,
   settitle,

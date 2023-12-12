@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Home from "./component/home"
 
-export default function witeBlog() {
+export default function WiteBlog() {
   const [title, settitle] = useState("");
   const [description, setdesc] = useState("");
   const [famous, setFamous] = useState(false)

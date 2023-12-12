@@ -13,7 +13,7 @@ export default function About() {
           </div>
           <div className="text-center pt-8  text-black text-xl px-4">
            
-            I am a passionate writer with a deep love for the written word. 
+            {`I am a passionate writer with a deep love for the written word. 
             Writing, to me, is not just a profession; it's a way of life. It allows me to weave stories, craft narratives, and share ideas that resonate with people from all walks of life.
             
            
@@ -29,7 +29,7 @@ export default function About() {
             I look forward to sharing the written word with you.
             
   
-            Warm regards
+            Warm regards`}
             
             </div>
         </div>

@@ -7,7 +7,7 @@ import { Michroma, Marcellus_SC, Amiri } from "next/font/google";
 const Mar = Marcellus_SC({ weight: "400", subsets: ["latin"] });
 const Ami = Amiri({ weight: "400", subsets: ["latin"] });
 
-export default function read({title, desc}) {
+export default function Read({title, desc}) {
   return (
     <div className="w-screen min-h-screen bg-slate-500">
             <div className="text-4xl text-center lg:text-5xl text-white ml-5 pt-8">
