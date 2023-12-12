@@ -26,12 +26,11 @@ const getBlogs = async () => {
 export default function Famed() {
   const [Blogs, setBlogs] = useState();
   const [loding, setloding] = useState(false)
+  const fetchData = async () => {
+    const {Blogs}  = await getBlogs();
+    setBlogs(Blogs);
+  };
   useEffect(() => {
-    const fetchData = async () => {
-      const {Blogs}  = await getBlogs();
-      setBlogs(Blogs);
-    };
-  
     fetchData();
     setloding(true)
   }, []);
@@ -46,20 +45,22 @@ export default function Famed() {
           {Blogs?.filter((blog) => blog.famous)
             .sort((a, b) => b.range - a.range)
             .slice(0, 3)
-            .map((blog) => {
+            .map((blog,i) => {
               return (
+                <div key={i}>
                 <Link href={`/hasil/${blog._id}`}>
                   <div className={styles.articleBox}>
                     <div className={`text-6xl text-center ${Mar.className}`}>
                       {blog.title}
                     </div>
                     <div
-                      className={`text-xl text-center p-10 overflow-hidden ${Ami.className}`}
+                      className={`text-xl text-center p-10 overflow-y-hidden ${Ami.className}`}
                     >
                       {parse(blog.description.slice(0, 300))}...
                     </div>
                   </div>
                 </Link>
+                </div>
               );
             })}
         </div>:<div className="text-4xl w-screen h-screen flex justify-center align-center">....</div>}

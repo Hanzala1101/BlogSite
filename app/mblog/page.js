@@ -35,17 +35,18 @@ export default async function Mblog() {
           <div className={Mac.className}>RECENT BLOGS</div>
         </div>
         <div className={`flex flex-col items-center m-10 ${Styles.scroll}`}>
-          {Blogs.sort((a, b)=> b.range - a.range).map((t) => (
-            <Link href={`/hasil/${t._id}`} >
-              <div className={Styles.blogbox}>
-                <div className={`text-4xl ${Mar.className}`}>{t.title}</div>
-                <div className={`text-xl ${Ami.className}`}>
-                  {parse(t.description?.slice(0, 60))}...
+          {Blogs.sort((a, b) => b.range - a.range).map((t, i) => (
+            <div key={i}>
+              <Link href={`/hasil/${t._id}`} >
+                <div className={Styles.blogbox}>
+                  <div className={`text-4xl ${Mar.className}`}>{t.title}</div>
+                  <div className={`text-xl ${Ami.className}`}>
+                    {parse(t.description?.slice(0, 60))}...
+                  </div>
+                  <Star count={t.range} />
                 </div>
-                <Star id={t._id} count={t.range} />
-              </div>
-              {/* <Blog title={t.title} desc={t.description} id={t._id} key={t._id} /> */}
-            </Link>
+              </Link>
+            </div>
           ))}
         </div>
 

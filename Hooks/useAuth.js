@@ -1,10 +1,9 @@
 import axios from "axios"
 import { deleteCookie } from "cookies-next"
-import useAuthContext, { useLogin } from './useAuthContext'
+import useAuthContext from './useAuthContext'
 
 const useAuth = () => {
-  const { setAuthState } = useAuthContext();
-  const {loginCard, setloginCard} = useLogin();
+  const { setAuthState, setloginCard } = useAuthContext();
 
   const signin = async (data) => {
     setAuthState((prev) => ({
@@ -26,7 +25,7 @@ const useAuth = () => {
       }));
       if(res?.statusText==='OK'){setloginCard(false)}
     } catch (error) {
-      console.log(error);
+      
       setAuthState((prev) => ({
         ...prev,
         loading: false,
@@ -43,7 +42,7 @@ const useAuth = () => {
       error: null,
       data: null,
     }));
-    console.log(data.first_name)
+    
     try {
       const res = await axios.post("http://127.0.0.1:3000/api/auth/signup", {
         first_name: data.first_name,
@@ -57,10 +56,10 @@ const useAuth = () => {
         error: null,
         data: res?.data
       }));
-      console.log(res)
+      
       if(res?.statusText==='OK'){setloginCard(false)}
     } catch (error) {
-      console.log(error);
+      
       setAuthState((prev) => ({
         ...prev,
         loading: false,

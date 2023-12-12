@@ -1,10 +1,9 @@
-"use client";
-import { React, useContext, useState } from "react";
-import { logincontext } from "@/global/logincon";
+import { React, useState } from "react";
 import SignUp from "./AuthModel";
+import useAuthContext from "@/Hooks/useAuthContext";
 
 function card() {
-  const { loginCard } = useContext(logincontext);
+  const { loginCard } = useAuthContext();
   const [isSignin, setisSignin] = useState(true);
   return (
     <>

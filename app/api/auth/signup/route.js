@@ -58,7 +58,7 @@ export async function POST(request) {
 
     const hashpassword = await bcrypt.hash(res.password, 10)
     
-    await User.create({ first_name: res.first_name, last_name: res.last_name, email: res.email, password: hashpassword })
+    await User.create({ admin:false ,first_name: res.first_name, last_name: res.last_name, email: res.email, password: hashpassword })
 
     const alg = "HS256"
     const signature = new TextEncoder().encode(process.env.JWT_SECRET)
@@ -67,11 +67,12 @@ export async function POST(request) {
     .setExpirationTime("24h")
     .sign(signature)
 
-    const response = new NextResponse(JSON.stringify({
+    const response = NextResponse.json({
+        admin:false,
         first_name:res.first_name,
         last_name:  res.last_name,
         email:  res.email
-    },{status:200}))
+    },{status:200})
 
     response.cookies.set({
         name: "jwt",

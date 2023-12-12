@@ -12,7 +12,6 @@ export default function HomeComponent() {
     <section id="home">
       <div className={`${"flex  w-screen place-items-center  "}, ${Styles.height}`}>
         <div className="text-white  ">
-          {/* <div className="w-96 h-56 pt-96 absolute bg-[#AE442350] blur-3xl leading-loose"></div> */}
           <div className={`relative p-2 ml-10 ${inter.className}`}>
             <div className={`uppercase lg:text-8xl text-7xl ${Lanc.className}`}>
               Welcome.....

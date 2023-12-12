@@ -1,8 +1,10 @@
 import React from "react";
+import Alert from '@mui/material/Alert';
 
-export default function AuthModelInput({ register, isSignIn }) {
+export default function AuthModelInput({ register, isSignIn ,errors}) {
   return (
     <>
+    {errors.length?(<Alert severity="errors">{errors}</Alert>):("")}
       {isSignIn ? null:(
         <div className="flex">
           <div>
@@ -22,7 +24,7 @@ export default function AuthModelInput({ register, isSignIn }) {
                 required: true,
                 pattern: /^[a-zA-Z]+$/,
               })}
-            ></input>
+            />
           </div>
           <div className="w-2"></div>
           <div>
@@ -42,7 +44,7 @@ export default function AuthModelInput({ register, isSignIn }) {
                 required: true,
                 pattern: /^[a-zA-Z]+$/,
               })}
-            ></input>
+            />
           </div>
         </div>
       ) }
@@ -60,7 +62,7 @@ export default function AuthModelInput({ register, isSignIn }) {
           className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
           placeholder="name@company.com"
           {...register("email", { required: true, pattern: /^\S+@\S+$/i })}
-        ></input>
+        />
       </div>
       <div>
         <label
@@ -76,7 +78,7 @@ export default function AuthModelInput({ register, isSignIn }) {
           placeholder="••••••••"
           className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
           {...register("password", { required: true })}
-        ></input>
+        />
       </div>
       {isSignIn ? null:(
         <div>
@@ -93,7 +95,7 @@ export default function AuthModelInput({ register, isSignIn }) {
             placeholder="••••••••"
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
             {...register("password1", { required: true })}
-          ></input>
+          />
         </div>
       )}
       <div className="flex items-start">
@@ -104,7 +106,7 @@ export default function AuthModelInput({ register, isSignIn }) {
               type="checkbox"
               value=""
               className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800"
-            ></input>
+            />
           </div>
           <label
             htmlFor="remember"

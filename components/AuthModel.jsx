@@ -1,7 +1,4 @@
-import styles from "../styles/Home.module.css";
 import { Michroma } from "next/font/google";
-import { React, useContext, useState } from "react";
-import { logincontext } from "@/global/logincon";
 import { useForm } from "react-hook-form";
 import AuthModelInput from "./AuthModelInput";
 import useAuth from "@/Hooks/useAuth";
@@ -12,8 +9,7 @@ import Alert from '@mui/material/Alert';
 const Mac = Michroma({ weight: "400", subsets: ["latin"] });
 
 export default function About({ isSignIn, setisSignin }) {
-  const { setloginCard } = useContext(logincontext);
-  const {loading, data, error}= useAuthContext();
+  const {loading, data, error,loginCard,setloginCard}= useAuthContext();
 
   const {
     register,
@@ -56,10 +52,11 @@ export default function About({ isSignIn, setisSignin }) {
           <h5
             className={`text-xl font-medium text-gray-900 dark:text-white ${Mac.className}`}
           >
-            {renderContent("Sign In","Sign Up ")} to our platform
+            {renderContent("Sign In to our platform","Sign Up to our platform")}
           </h5>
           
           {error?(<Alert severity="error">{error}</Alert>):("")}
+          {/* {errors?(<Alert severity="errors">{error}</Alert>):("")} */}
           <AuthModelInput register={register}
                 errors={errors}
                 isSignIn={isSignIn}/>

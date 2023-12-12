@@ -33,7 +33,7 @@ export async function POST(request) {
     })
 
     if (errors.length) {
-        return new NextResponse(JSON.stringify({ errorMessage: errors[0] }))
+        return new NextResponse(JSON.stringify({ errorMessage: errors[0] }),{status:400})
     }
 
     await connectMongoDB();
@@ -57,11 +57,12 @@ export async function POST(request) {
     .setExpirationTime("24h")
     .sign(signature)
 
-    const response = new NextResponse(JSON.stringify({
+    const response = NextResponse.json({
+        admin:usersWithEmail.admin,
         first_name:usersWithEmail.first_name,
         last_name:  usersWithEmail.last_name,
         email:  usersWithEmail.email
-    },{status:200}))
+    },{status:200})
 
     response.cookies.set({
         name: "jwt",

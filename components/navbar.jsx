@@ -3,15 +3,12 @@ import Image from "next/image";
 import Main from "../assets/main.png";
 import Logo from "../assets/logo.png";
 import styles from "../styles/Home.module.css";
-import { React, useContext } from "react";
-import { logincontext } from "@/global/logincon";
 import Link from "next/link";
 import useAuth from "@/Hooks/useAuth";
 import useAuthContext from "@/Hooks/useAuthContext";
 
 export default function navbar() {
-  const {loginCard, setloginCard} = useContext(logincontext);
-  const {data} = useAuthContext()
+  const {data, loginCard, setloginCard} = useAuthContext()
   const {logout} = useAuth()
 
   const handleLogin =()=>{

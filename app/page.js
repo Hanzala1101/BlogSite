@@ -8,13 +8,11 @@ import About from "@/components/about";
 import Famed from "@/components/famed";
 import Contact from "@/components/contact";
 import Login from "../components/logincard";
-import { logincontext } from "@/global/logincon";
+import useAuthContext from "@/Hooks/useAuthContext";
 
 export default function Home() {
-  const [loginCard, setloginCard] = useState(false);
-
+  const {loginCard} = useAuthContext()
   return (
-    <logincontext.Provider value={{loginCard, setloginCard}}>
     <div className={`${loginCard?"overflow-hidden":" "} + ${styles.background_image}`}>
       <Navbar />
       <Login />
@@ -22,7 +20,6 @@ export default function Home() {
       <About />
       <Famed />
       <Contact />
-    </div> 
-    </logincontext.Provider>    
+    </div>
   )
 }
