@@ -7,9 +7,9 @@ const renderOptions = (formatData)=>{
         <select className = {className}>
             <option selected="selected"></option>
             {
-                options.map(value =>{
+                options.map((value,index) =>{
                     return (
-                        <option value={value}></option>
+                        <option value={value} key={index}></option>
                     )
                 })
             }
@@ -29,8 +29,9 @@ const CustomToolbar = () => (
                 return (
                     <span className = "ql-formats" key={index}>
                         {
-                            classes.map(formatData => {
-                                return formatData.options?renderOptions(formatData):renderSingle(formatData)
+                            classes.map((formatData,index) => {
+
+                                return (<div key={index}>{formatData.options?renderOptions(formatData):renderSingle(formatData)}</div>)
                             })
                         }
                     </span>
