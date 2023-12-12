@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import Home from "./component/home"
+import Home from "./component/homeShow"
 
 export default function WiteBlog() {
   const [title, settitle] = useState("");

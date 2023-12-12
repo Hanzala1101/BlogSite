@@ -1,10 +1,10 @@
 "use client";
 import React, { useState } from "react";
-import Home from "./home";
+import Home from "./homeShow";
 import { useRouter } from "next/navigation";
 
 
-export default function Home({ id, title, description }) {
+export default function HomeEdit({ id, title, description }) {
   const [newTitle, setnewtitle] = useState(title);
   const [newDescription, setnewdesc] = useState(description);
   const [newfamous, setnewFamous] = useState(false)
