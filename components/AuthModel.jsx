@@ -56,7 +56,6 @@ export default function About({ isSignIn, setisSignin }) {
           </h5>
           
           {error?(<Alert severity="error">{error}</Alert>):("")}
-          {/* {errors?(<Alert severity="errors">{error}</Alert>):("")} */}
           <AuthModelInput register={register}
                 errors={errors}
                 isSignIn={isSignIn}/>

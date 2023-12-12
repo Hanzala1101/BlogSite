@@ -3,6 +3,7 @@ import { Michroma, Marcellus_SC, Amiri } from "next/font/google";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import parse from 'html-react-parser';
+import CircularProgress from '@mui/material/CircularProgress';
 
 const Mac = Michroma({ weight: "400", subsets: ["latin"] });
 const Mar = Marcellus_SC({ weight: "400", subsets: ["latin"] });
@@ -63,7 +64,9 @@ export default function Famed() {
                 </div>
               );
             })}
-        </div>:<div className="text-4xl w-screen h-screen flex justify-center align-center">....</div>}
+        </div>:<div className="w-full h-full flex justify-center content-center">
+          <CircularProgress />
+          </div>}
       </div>
     </section>
   );
