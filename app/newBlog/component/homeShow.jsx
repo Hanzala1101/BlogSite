@@ -3,6 +3,7 @@ import styles from "@/styles/Home.module.css";
 import Titles from "@/components/blogComponents/title";
 import CheckBox from "@/components/blogComponents/checkbox";
 // import Descp from "@/components/blogComponents/desc";
+import Desc from "./desc"
 import { Michroma, Orbitron, Amiri } from "next/font/google";
 import { useRouter } from "next/navigation";
 const Mac = Michroma({ weight: "400", subsets: ["latin"] });
@@ -106,10 +107,11 @@ export default function HomeShow({
               />
             </div>
           </div>
-          <textarea name="textarea" id="textarea" cols="30" rows="10" className="text-black"
+          {/* <textarea name="textarea" id="textarea" cols="30" rows="10" className="text-black"
           value={description} onChange={(e)=>setdesc(e.currentTarget.value)}
-          ></textarea>
+          ></textarea> */}
           {/* <Descp desc={description} setdesc={setdesc} /> */}
+          <Desc setdesc={setdesc}/>
           <button
             className="lg:mr-4 m-2 float-right bg-[#ffffff40] p-2 text-2xl  hover:text-black rounded-md"
             type="submit"

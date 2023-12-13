@@ -1,21 +1,21 @@
 import React, { useRef } from 'react';
 import { Editor } from '@tinymce/tinymce-react';
 
-export default function App({desc, setdesc}) {
+export default function App({setdesc}) {
   const editorRef = useRef(null);
   const log = () => {
     if (editorRef.current) {
         setdesc(editorRef.current.getContent())
-      // console.log(editorRef.current.getContent());
+    //   console.log(editorRef.current.getContent());
     }
   };
   return (
     <>
       <Editor
-         apiKey='fgzfr678tx67ay3ccu8yu17c17fi6a3bpz4s7mzqezjh4zwr'
+        t apiKey='fgzfr678tx67ay3ccu8yu17c17fi6a3bpz4s7mzqezjh4zwr'
         onInit={(evt, editor) => editorRef.current = editor}
-        initialValue={desc}
-        onSubmit={log}
+        initialValue='<p>This is the initial content of the editor.</p>'
+        onChange={log}
         init={{
           height: 500,
           menubar: false,
