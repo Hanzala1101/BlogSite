@@ -1,8 +1,8 @@
 "use client";
 import Image from "next/image";
-import Main from "../assets/main.png";
-import Logo from "../assets/logo.png";
-import styles from "../styles/Home.module.css";
+import Main from "@/assets/main.png";
+import Logo from "@/assets/logo.png";
+import styles from "@/styles/Home.module.css";
 import Link from "next/link";
 import useAuth from "@/Hooks/useAuth";
 import useAuthContext from "@/Hooks/useAuthContext";

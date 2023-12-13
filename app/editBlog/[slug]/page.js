@@ -1,4 +1,4 @@
-import Home from "../component/homeEdit"
+import Home from "./component/homeEdit"
 
 const getBlogs = async (id) => {
   try {
@@ -11,23 +11,23 @@ const getBlogs = async (id) => {
     }
     return res.json();
   } catch (error) {
-    console.log("Error loading topics: ", error);
+    console.log("Error good loading blog: ", error);
   }
 };
 
 
-export default async function WiteBlog({ params }) {
-  try{
+export default async function EditBlog({ params }) {
+  try {
     const { blog } = await getBlogs(params.slug);
-
+    // console.log(blog.famous,"fajdhsudfhasoidf")
     return (
-      <Home id={id} title={blog.title} description={blog.description}
+      <Home id={params.slug} title={blog.title} description={blog.description}
         range={blog.range}
         famous={blog.famous} />
-    );}
-    catch{
-      return(<>blogs not found</>)
-    }
+    );
+  } catch (error) {
+   return new Error("blogs did not get") 
+  }
 }
 
 

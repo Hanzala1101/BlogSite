@@ -1,5 +1,5 @@
 import { Lexend, Old_Standard_TT, Lancelot, Michroma } from "next/font/google";
-import Styles from "../styles/Home.module.css"
+import Styles from "@/styles/Home.module.css"
 import Link from "next/link";
 // If loading a variable font, you don't need to specify the font weight
 const inter = Lexend({ subsets: ["latin"] });

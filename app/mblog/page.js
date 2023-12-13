@@ -16,12 +16,12 @@ const getBlogs = async () => {
     });
 
     if (!res.ok) {
-      throw new Error("Failed to fetch topics");
+      throw new Error("Failed to fetch blogs");
     }
 
     return res.json();
   } catch (error) {
-    console.log("Error loading topics: ", error);
+    console.log("Error loading blogs: ", error);
   }
 };
 
@@ -44,7 +44,7 @@ export default async function Mblog() {
                   <div className={`text-xl ${Ami.className}`}>
                     {parse(t.description?.slice(0, 60))}...
                   </div>
-                  <Star count={t.range} />
+                  <Star count={t.range} id={t._id}/>
                 </div>
               </Link>
             </div>
@@ -53,7 +53,7 @@ export default async function Mblog() {
 
         <div className="flex justify-center ">
           <a href="/">
-            <button className="bg-red-800 text-white p-2 rounded-md hover:bg-red-950">
+            <button className="bg-red-800 text-white p-2 my-8 rounded-md hover:bg-red-950">
               Go to Home
             </button>
           </a>

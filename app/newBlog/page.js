@@ -2,12 +2,13 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Home from "./component/homeShow"
+// import HomeComponent from "@/components/indexpage/homeComponents";
 
-export default function WiteBlog() {
-  const [title, settitle] = useState("");
-  const [description, setdesc] = useState("");
+export default function NewBlog() {
+  const [title, settitle] = useState("My blog");
+  const [description, setdesc] = useState("Started long time ago");
   const [famous, setFamous] = useState(false)
-  const [range, setrange] = useState(0)
+  const [range, setrange] = useState(5)
   const router = useRouter();
 
   const SubmitEvent = async (e) => {
@@ -39,9 +40,13 @@ export default function WiteBlog() {
   };
 
   return (
+    // <HomeComponent/>
     <Home title={title} 
-    description={description} settitle={settitle} 
-    setdesc={setdesc} SubmitEvent={SubmitEvent} range={range}
+    description={description} 
+    settitle={settitle} 
+    setdesc={setdesc} 
+    SubmitEvent={SubmitEvent}
+     range={range}
      setrange={setrange} famous={famous} setFamous={setFamous} />
   );
 }

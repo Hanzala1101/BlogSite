@@ -4,11 +4,11 @@ import Home from "./homeShow";
 import { useRouter } from "next/navigation";
 
 
-export default function HomeEdit({ id, title, description }) {
+export default function HomeEdit({ id, title, description, range, famous }) {
   const [newTitle, setnewtitle] = useState(title);
   const [newDescription, setnewdesc] = useState(description);
-  const [newfamous, setnewFamous] = useState(false)
-  const [newrange, setnewrange] = useState(0)
+  const [newfamous, setnewFamous] = useState(range)
+  const [newrange, setnewrange] = useState(famous)
 
   const router = useRouter();
 

@@ -1,8 +1,9 @@
 import { Michroma, Orbitron, Amiri } from "next/font/google";
 import styles from "@/styles/Home.module.css";
-import Pic from "../assets/cpic.jpg";
-import Spic from "../assets/spic.jpg";
+import Pic from "@/assets/cpic.jpg";
+import Spic from "@/assets/spic.jpg";
 import Image from "next/image";
+import Link from "next/link";
 
 const Mac = Michroma({ weight: "400", subsets: ["latin"] });
 const Orb = Orbitron({ weight: "400", subsets: ["latin"] });
@@ -44,11 +45,11 @@ export default function Contact() {
                 paper.
               </div>
             </div>
-            <a href="/writeBlog">
+            <Link href="/newBlog">
               <div className=" text-black uppercase border border-black p-2 px-10 w-fit text-2xl mt-2 bg-[#a1392dce]  hover:bg-[#331717b3]">
                 start
               </div>
-            </a>
+            </Link>
           </div>
           <div className={styles.rightHalf}>
             <Image src={Pic} alt="not found" className="h-full w-full" />

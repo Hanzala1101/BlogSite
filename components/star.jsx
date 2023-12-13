@@ -9,7 +9,7 @@ export default function Star(props) {
   const [count, setcount] = useState(isNaN(props?.count) ? 0 : props?.count);
   const { data } = useAuthContext();
   const router = useRouter();
-  
+
   const removeblog = async (e) => {
     e.preventDefault();
     const confirmed = confirm("Are you sure you want to delete?");
@@ -28,29 +28,28 @@ export default function Star(props) {
     e.preventDefault();
     const confirme = confirm("Are you sure?");
     if (confirme) {
-      router.push(`/writeBlog/${props.id}`);
+      router.push(`/editBlog/${props.id}`);
     }
   };
 
-
   return (
     <>
-      <div className={`${data?.adim?"flex justify-between w-56":""}`}>
+      <div className={`flex justify-between`}>
         <div className="flex justify-end space-x-1">
-          {[...Array(count)].map((e,index) => (
+          {[...Array(count)].map((e, index) => (
             <div key={index}>
-            <Rating color="text-black" />
+              <Rating color="text-black" />
             </div>
           ))}
-          {[...Array(5 - count)].map((e,index) => (
+          {[...Array(5 - count)].map((e, index) => (
             <div key={index}>
-            <Rating color="text-gray-300 dark:text-gray-500" />
+              <Rating color="text-gray-300 dark:text-gray-500" />
             </div>
           ))}
         </div>
 
         {data?.admin ? (
-          <div className="flex justify-between w-20 ">
+          <div className="flex justify-between w-20 ml-4">
             <button onClick={removeblog}>
               <RiChatDeleteFill size={25} className="hover:scale-150" />
             </button>
@@ -66,7 +65,7 @@ export default function Star(props) {
   );
 }
 
-const Rating = ({ color}) => {
+const Rating = ({ color }) => {
   return (
     <svg
       className={`w-4 h-4 ${color}`}

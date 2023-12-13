@@ -31,7 +31,7 @@ const CustomToolbar = () => (
                         {
                             classes.map((formatData,index) => {
 
-                                return (<div key={index}>{formatData.options?renderOptions(formatData):renderSingle(formatData)}</div>)
+                                return formatData.options?renderOptions(formatData):renderSingle(formatData)
                             })
                         }
                     </span>

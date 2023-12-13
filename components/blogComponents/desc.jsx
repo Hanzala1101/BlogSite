@@ -32,6 +32,11 @@ export default function Desc({ desc, setdesc }) {
     "video",
     "formula",
   ];
+  const descSet =(e)=>{
+    // console.log(e,"gsdfgdfgsd")
+    setdesc(e)
+    // console.log(e.terget.value)
+  }
   return (
     <div className="w-full bg-gray-200 text-black mr-5">
       <CustomToolbar />
@@ -39,7 +44,7 @@ export default function Desc({ desc, setdesc }) {
       className="h-80"
         theme="snow"
         value={desc}
-        onChange={(e) => setdesc(e)}
+        onChange={descSet}
         modules={modules}
         formats={formats}
       />

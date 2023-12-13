@@ -3,7 +3,7 @@ import React from 'react'
 export default function Checkbox({famous, setFamous}) {
 
   const handleCheckboxChange = () => {
-    setFamous(!famous)
+    setFamous(famous=>!famous)
   }
   return (
     <div>
