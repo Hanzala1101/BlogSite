@@ -11,7 +11,7 @@ const Ami = Amiri({ weight: "400", subsets: ["latin"] });
 
 const getBlogs = async () => {
   try {
-    const res = await fetch("http://localhost:3000/api/blog", {
+    const res = await fetch("https://blog-zaara/api/blog", {
       cache: "no-store",
     });
 
@@ -26,8 +26,7 @@ const getBlogs = async () => {
 };
 
 export default async function Mblog() {
-  try {
-    const { Blogs } = await getBlogs();
+    const blogs  = await getBlogs();
 
   return (
     <section id="main">
@@ -36,7 +35,8 @@ export default async function Mblog() {
           <div className={Mac.className}>RECENT BLOGS</div>
         </div>
         <div className={`flex flex-col items-center m-10 ${Styles.scroll}`}>
-          {Blogs.sort((a, b) => b.range - a.range).map((t, i) => (
+          {blogs && blogs.Blogs &&
+          blogs.Blogs.sort((a, b) => b.range - a.range).map((t, i) => (
             <div key={i}>
               <Link href={`/hasil/${t._id}`} >
                 <div className={Styles.blogbox}>
@@ -61,8 +61,4 @@ export default async function Mblog() {
       </div>
     </section>
   )
-    } catch (error) {
-      return (<>Blogs not found</>)
-    }
-
 }

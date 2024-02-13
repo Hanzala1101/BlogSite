@@ -14,7 +14,7 @@ export default function Star(props) {
     e.preventDefault();
     const confirmed = confirm("Are you sure you want to delete?");
     if (confirmed) {
-      const res = await fetch(`http://localhost:3000/api/blog?id=${props.id}`, {
+      const res = await fetch(`https://blog-zaara/api/blog?id=${props.id}`, {
         method: "DELETE",
       });
 

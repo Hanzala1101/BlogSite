@@ -4,7 +4,7 @@ const getBlogs = async (id) => {
   // console.log("id",id)
   
     try {
-      const res = await fetch(`http://localhost:3000/api/blog/${id}`, {
+      const res = await fetch(`httpa://blog-zaara/api/blog/${id}`, {
         cache: "no-store",
       });
   

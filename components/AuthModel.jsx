@@ -40,7 +40,7 @@ export default function AuthModel({ isSignIn, setisSignin }) {
           </div>
         ):(
         <><div
-          className="text-white w-full flex justify-end text-black right-6 font-extrabold text-lg hover:cursor-pointer"
+          className="text-white w-full flex justify-end right-6 font-extrabold text-lg hover:cursor-pointer"
           onClick={() => {
             setloginCard(false);
           }}

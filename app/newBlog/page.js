@@ -21,7 +21,7 @@ export default function NewBlog() {
 
     try {
  
-      const res = await fetch("http://localhost:3000/api/blog", {
+      const res = await fetch("https://blog-zaara/api/blog", {
         method: "POST",
         headers: {
           "Content-type": "application/json",

@@ -2,7 +2,7 @@ import Home from "./component/homeEdit"
 
 const getBlogs = async (id) => {
   try {
-    const res = await fetch(`http://localhost:3000/api/blog/${id}`, {
+    const res = await fetch(`https://blog-zaara/api/blog/${id}`, {
       cache: "no-store",
     });
 
@@ -17,17 +17,14 @@ const getBlogs = async (id) => {
 
 
 export default async function EditBlog({ params }) {
-  try {
     const { blog } = await getBlogs(params.slug);
     // console.log(blog.famous,"fajdhsudfhasoidf")
     return (
       <Home id={params.slug} title={blog.title} description={blog.description}
         range={blog.range}
         famous={blog.famous} />
+      
     );
-  } catch (error) {
-   return new Error("blogs did not get") 
-  }
 }
 
 
