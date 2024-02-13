@@ -21,7 +21,7 @@ export default function HomeEdit({ id, title, description, range, famous }) {
     }
 
     try {
-      const res = await fetch(`https://blog-zaara/api/blog/${id}`, {
+      const res = await fetch(`https://blog-zaara.vercel.app/api/blog/${id}`, {
         method: "PUT",
         headers: {
           "Content-type": "application/json",

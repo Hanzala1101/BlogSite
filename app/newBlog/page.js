@@ -21,7 +21,7 @@ export default function NewBlog() {
 
     try {
  
-      const res = await fetch("https://blog-zaara/api/blog", {
+      const res = await fetch("https://blog-zaara.vercel.app/api/blog", {
         method: "POST",
         headers: {
           "Content-type": "application/json",

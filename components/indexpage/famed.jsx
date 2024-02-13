@@ -11,7 +11,7 @@ const Ami = Amiri({ weight: "700", subsets: ["latin"] });
 
 const getBlogs = async () => {
   try {
-    const res = await fetch(`https://blog-zaara/api/blog`, {
+    const res = await fetch(`https://blog-zaara.vercel.app/api/blog`, {
       cache: "no-store",
     });
     if (!res.ok) {

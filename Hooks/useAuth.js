@@ -13,7 +13,7 @@ const useAuth = () => {
       data: null,
     }));
     try {
-      const res = await axios.post("https://blog-zaara/api/auth/signin", {
+      const res = await axios.post("https://blog-zaara.vercel.app/api/auth/signin", {
         email: data.email,
         password: data.password,
       });
@@ -44,7 +44,7 @@ const useAuth = () => {
     }));
     
     try {
-      const res = await axios.post("https://blog-zaara/api/auth/signup", {
+      const res = await axios.post("https://blog-zaara.vercel.app/api/auth/signup", {
         first_name: data.first_name,
         last_name: data.last_name,
         email: data.email,

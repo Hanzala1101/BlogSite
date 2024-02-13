@@ -2,7 +2,7 @@ import Home from "./component/homeEdit"
 
 const getBlogs = async (id) => {
   try {
-    const res = await fetch(`https://blog-zaara/api/blog/${id}`, {
+    const res = await fetch(`https://blog-zaara.vercel.app/api/blog/${id}`, {
       cache: "no-store",
     });
 
